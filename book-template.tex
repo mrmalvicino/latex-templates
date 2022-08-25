@@ -1,0 +1,183 @@
+\documentclass[a5paper,12pt,twoside]{book}
+%\setlength{\headheight}{15pt} % Sirve para corregir un error asociado a fancyhdr
+
+\usepackage[tmargin=20mm,bmargin=25mm,lmargin=20mm,rmargin=20mm]{geometry} % Formato de página
+
+\usepackage[output-decimal-marker={,},quotient-mode=fraction]{siunitx} % Unidades del SI
+    \sisetup{per-mode = fraction}
+    \DeclareSIUnit{\rpm}{rpm}
+    \DeclareSIUnit{\atmosphere}{atm}
+
+\usepackage[framemethod=TikZ]{mdframed} % Define \begin{mdframed}[style=MyFrame1]
+
+    \mdfdefinestyle{MyFrame1}
+    {linecolor=black!80!gray,
+    outerlinewidth=0.5pt,
+    roundcorner=0pt,
+    innertopmargin=15pt,
+    innerbottommargin=20pt,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    backgroundcolor=gray!30!white}
+
+    \mdfdefinestyle{MyFrame2}
+    {linecolor=white,
+    outerlinewidth=0.5pt,
+    roundcorner=10pt,
+    innertopmargin=15pt,
+    innerbottommargin=20pt,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    backgroundcolor=gray!20!white}
+
+\usepackage[spanish]{babel}  % Traducciones y abreviaturas
+\usepackage{amssymb}  % Símbolos y tipografía matemáticos
+\usepackage{amsmath}  % Formato y estructura matemáticos
+\usepackage{esint} % Define \oiint para integrales cerradas y acomoda \iiint
+\usepackage{hyperref}  % Referencias cruzadas
+\usepackage{fancyhdr}  % Encabezado y pie
+\usepackage{graphicx}  % Define \includegraphics
+\usepackage{pdfpages} % Define \includepdf
+\usepackage{comment} % Comenta todo entre \begin{comment} \end{comment}
+
+
+% ENTORNOS DE NUMERACIÓN
+\newtheorem{defn}{{Definición}}[chapter]
+\newtheorem{prop}{{Propiedad}}[chapter]
+\newtheorem{example}{{Ejemplo}}[chapter]
+
+% ENTORNOS DE FORMATO
+\newenvironment{formatI}{\vspace{1ex}\par\small\sffamily} % Consignas de ejemplos
+
+
+% COMANDOS DE FORMATO
+\newcommand{\sub}[2]{{{#1}_\textsl{{#2}}}} % #1 subíndice #2 (Usado cuando #2 es $texto$)
+\newcommand{\scale}[2]{\text{\scalebox{#1}{$#2$}}} % Aplicar factor de escala #1 a la ecuación #2
+\newcommand{\cusTi}[1]{\noindent\textbf{#1}} % Título de definiciones, propiedades y ejemplos
+\newcommand{\cusTe}[1]{\vspace{2mm}\\\text{\hspace{\the\parindent}}#1} % Descripción de definiciones, propiedades y ejemplos
+\newcommand{\noTi}[1]{\text{\hspace{\the\parindent}}#1} % Descripción de MyFrame1 que no tenga título
+\newcommand{\concept}[1]{\vspace{1ex} \textsc{#1}} % Subtítulos sin jerarquía
+\newcommand{\braces}[1]{{ \left\{ {#1} \right\} }} % #1 entre llaves
+\newcommand{\sqb}[1]{{ \begin{bmatrix} #1 \end{bmatrix} }} % #1 entre corchetes
+\newcommand{\bb}[1]{\left(#1\right)} % #1 entre paréntesis
+\newcommand{\sfrac}[2]{#1/#2} % Fracciones #1/#2 para reemplazar el (muy lento) \usepackage{xfrac}
+\newcommand{\captionSpace}{-0.8cm} % Espacio entre figuras y pie de foto
+
+% COMANDOS LÓGICOS
+\newcommand{\absurd}{\bot} % Absurdo o contradicción
+\newcommand{\tq}{\hspace{1ex} \big/ \hspace{1ex}} % tal que
+
+% COMANDOS PARA NOTACIÓN DE FUNCIONES
+\newcommand{\intProd}[2]{<\hspace{-0.8mm}#1,#2\hspace{-0.8mm}>} % Producto interno entre #1 y #2
+\newcommand{\media}[2]{\underset{#2}{\sub{#1}{med}}} % #1 media entre #2
+\newcommand{\norm}[1]{{\left| {#1} \right|}} % Módulo de #1
+\newcommand{\nnorm}[1]{{\left|\left| {#1} \right|\right|}} % Norma de #1
+\newcommand{\trans}[1]{#1^*} % Matriz transpuesta de #1
+\newcommand{\conj}[1]{\overline{#1}} % Conjugado de #1
+\newcommand{\proy}{\operatorname{proy}} % Proyección ortogonal
+\newcommand{\ave}[1]{{\sub{#1}{med}}} % Valor promedio de #1
+\newcommand{\rms}[1]{{\sub{#1}{ef}}} % Valor eficaz de #1
+\newcommand{\peak}[1]{{\sub{#1}{pk}}} % Valor pico de #1
+
+% COMANDOS PARA NOTACIÓN DE ELEMENTOS
+\newcommand{\class}[1][1]{\mathcal{C}^{#1}} % Clase o cantidad de derivadas parciales contínuas
+\newcommand{\versor}[1]{\hat{#1}} % Vector unitario #1
+\newcommand{\fasor}[1]{\check{#1}} % Fasor #1
+\newcommand{\iVer}{\versor{\imath}} % i versor
+\newcommand{\jVer}{\versor{\jmath}} % j versor
+\newcommand{\kVer}{\versor{k}} % k versor
+\newcommand{\eVer}{\versor{\textbf{e}}} % Versor canónico
+\newcommand{\tang}{\textbf{t}} % Vector tangente
+\newcommand{\setO}{\varnothing} % Conjunto vacío
+\newcommand{\setN}{\mathbb{N}} % Conjunto de los números naturales
+\newcommand{\setZ}{\mathbb{Z}} % Conjunto de los números enteros
+\newcommand{\setR}{\mathbb{R}} % Conjunto de los números reales
+\newcommand{\setI}{\mathbb{I}} % Conjunto de los números imaginarios
+\newcommand{\setC}{\mathbb{C}} % Conjunto de los números complejos
+\newcommand{\iu}{\mathrm{i}\mkern1mu} % Unidad imaginaria o número i
+\newcommand{\setV}{\mathbb{V}} % Espacio vectorial V
+\newcommand{\setW}{\mathbb{W}} % Espacio vectorial W
+\newcommand{\setK}{\mathbb{K}} % Cuerpo K
+\newcommand{\Nu}{\operatorname{Nu}} % Núcleo
+\newcommand{\im}{\operatorname{Im}} % Imagen
+\newcommand{\ith}{i} % Valor i-ésimo para sumatorias y permutadores
+\newcommand{\jth}{j} % Valor j-ésimo para sumatorias y permutadores
+\newcommand{\kth}{k} % Valor k-ésimo para sumatorias y permutadores
+\newcommand{\nth}{n} % Valor n-ésimo para sumatorias y permutadores
+\newcommand{\Nth}{N} % Valor N-ésimo para sumatorias y permutadores
+\newcommand{\mth}{m} % Valor m-ésimo para sumatorias y permutadores
+
+% COMANDOS DE OPERADORES
+\newcommand{\dif}{\textsl{d}} % Diferencial
+\newcommand{\grad}{\Vec{\nabla}} % Gradiente a fin
+
+% COMANDOS DE NOTACIÓN PARA CONSTANTES Y MAGNITUDES
+\newcommand{\weight}{\textsl{p}} % Peso
+\newcommand{\xyz}{\vec{r}\hspace{0.05cm}} % Trayectoria [x(t),y(t),z(t)]
+\newcommand{\cstcoulomb}{k_e} % Constante de Coulomb
+
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\scriptsize \nouppercase\rightmark}
+\cfoot{\scriptsize \thepage}
+\pagenumbering{gobble}
+\renewcommand{\headrulewidth}{0pt}
+
+\frontmatter
+% \includepdf{cover}
+
+\begin{center}
+    \begin{Huge}
+        \textbf{Título del libro}
+    \end{Huge}
+
+    \vspace{1cm}
+    \textbf{Primera edición}
+    \vspace{2cm}
+
+    \begin{Large}
+        Malvicino, Maximiliano R.
+        % \\ Apellido, Nombre de otros autores
+    \end{Large}
+\end{center}
+
+\clearpage
+\noindent
+\textbf{Prefacio}
+
+La versión digital más reciente de este texto puede ser descargada gratuitamente de \url{https://es.overleaf.com/read/tgbpgkmjrjvf}.
+
+\renewcommand{\spanishappendixname}{Anexo}
+\tableofcontents
+
+\mainmatter
+\pagenumbering{arabic}
+
+
+\chapter{Nombre del primer capítulo}
+
+
+\section{Nombre de la primera sección}
+
+
+\begin{thebibliography}{1}
+    \bibitem{1} \textsc{Apellido, Nombre N. \& Apellido, Nombre N. (AAÑO). Título. \\ (\url{https://bit.ly/link}})
+\end{thebibliography}
+
+
+\appendix
+
+
+\chapter{Anexo de un tema}
+
+
+\section{Primera sección del apéndice}
+
+
+\chapter{Anexo de otro tema}
+
+
+\end{document}
