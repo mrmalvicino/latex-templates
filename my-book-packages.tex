@@ -1,0 +1,38 @@
+\usepackage[tmargin=20mm,bmargin=25mm,lmargin=20mm,rmargin=20mm]{geometry} % Formato de página
+
+\usepackage[output-decimal-marker={,}]{siunitx} % Unidades del SI
+    \sisetup{per-mode = fraction}
+    \DeclareSIUnit{\rpm}{rpm}
+    \DeclareSIUnit{\atmosphere}{atm}
+
+\usepackage[framemethod=TikZ]{mdframed} % Define \begin{mdframed}[style=MyFrame1]
+
+    \mdfdefinestyle{MyFrame1}
+    {linecolor=black!80!gray,
+    outerlinewidth=0.5pt,
+    roundcorner=0pt,
+    innertopmargin=15pt,
+    innerbottommargin=20pt,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    backgroundcolor=gray!30!white}
+
+    \mdfdefinestyle{MyFrame2}
+    {linecolor=white,
+    outerlinewidth=0.5pt,
+    roundcorner=10pt,
+    innertopmargin=15pt,
+    innerbottommargin=20pt,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    backgroundcolor=gray!20!white}
+
+\usepackage[spanish]{babel}  % Traducciones y abreviaturas
+\usepackage{amssymb}  % Símbolos y tipografía matemáticos
+\usepackage{amsmath}  % Formato y estructura matemáticos
+\usepackage{esint} % Define \oiint para integrales cerradas y acomoda \iiint
+\usepackage{hyperref}  % Referencias cruzadas
+\usepackage{fancyhdr}  % Encabezado y pie
+\usepackage{graphicx}  % Define \includegraphics
+\usepackage{pdfpages} % Define \includepdf
+\usepackage{comment} % Comenta todo entre \begin{comment} \end{comment}
