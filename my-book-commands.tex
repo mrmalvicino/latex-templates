@@ -16,16 +16,17 @@
 \newcommand{\tq}{\hspace{1ex} \big/ \hspace{1ex}} % tal que
 
 % COMANDOS PARA NOTACIÓN DE FUNCIONES
+\newcommand{\barrow}[3]{\left(\left.#1\right|_{#2}^{#3}\right)} % Evaluar #1 por regla de barrow entre #2 y #3
 \newcommand{\intProd}[2]{<\hspace{-0.8mm}#1,#2\hspace{-0.8mm}>} % Producto interno entre #1 y #2
 \newcommand{\media}[2]{\underset{#2}{\sub{#1}{med}}} % #1 media entre #2
 \newcommand{\norm}[1]{{\left| {#1} \right|}} % Módulo de #1
-\newcommand{\nnorm}[1]{{\left|\left| {#1} \right|\right|}} % Norma de #1
+\newcommand{\nnorm}[1]{{\left|\left| {#1} \hspace{0.3mm} \right|\right|}} % Norma de #1
 \newcommand{\trans}[1]{#1^*} % Matriz transpuesta de #1
 \newcommand{\conj}[1]{\overline{#1}} % Conjugado de #1
 \newcommand{\proy}{\operatorname{proy}} % Proyección ortogonal
 \newcommand{\ave}[1]{{\sub{#1}{med}}} % Valor promedio de #1
-\newcommand{\rms}[1]{{\sub{#1}{ef}}} % Valor eficaz de #1
-\newcommand{\peak}[1]{{\sub{#1}{pk}}} % Valor pico de #1
+\newcommand{\rms}[1]{{\sub{#1}{rms}}} % Valor eficaz de #1
+\newcommand{\peak}[1]{{\sub{#1}{pico}}} % Valor pico de #1
 
 % COMANDOS PARA NOTACIÓN DE ELEMENTOS
 \newcommand{\class}[1][1]{\mathcal{C}^{#1}} % Clase o cantidad de derivadas parciales contínuas
@@ -42,7 +43,7 @@
 \newcommand{\setR}{\mathbb{R}} % Conjunto de los números reales
 \newcommand{\setI}{\mathbb{I}} % Conjunto de los números imaginarios
 \newcommand{\setC}{\mathbb{C}} % Conjunto de los números complejos
-\newcommand{\iu}{\mathrm{i}\mkern1mu} % Unidad imaginaria o número i
+\newcommand{\iu}{\hspace{0.5mm}\mathrm{j}\hspace{0.5mm}} % Unidad imaginaria o número i
 \newcommand{\setV}{\mathbb{V}} % Espacio vectorial V
 \newcommand{\setW}{\mathbb{W}} % Espacio vectorial W
 \newcommand{\setK}{\mathbb{K}} % Cuerpo K
@@ -51,9 +52,11 @@
 \newcommand{\ith}{i} % Valor i-ésimo para sumatorias y permutadores
 \newcommand{\jth}{j} % Valor j-ésimo para sumatorias y permutadores
 \newcommand{\kth}{k} % Valor k-ésimo para sumatorias y permutadores
+\newcommand{\Kth}{K} % Valor K-ésimo para sumatorias y permutadores
 \newcommand{\nth}{n} % Valor n-ésimo para sumatorias y permutadores
 \newcommand{\Nth}{N} % Valor N-ésimo para sumatorias y permutadores
 \newcommand{\mth}{m} % Valor m-ésimo para sumatorias y permutadores
+\newcommand{\Mth}{M} % Valor M-ésimo para sumatorias y permutadores
 
 % COMANDOS DE OPERADORES
 \newcommand{\dif}{\textsl{d}} % Diferencial
